@@ -1,0 +1,880 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand js-scroll-trigger" href="#page-top"
+      ><img src="../../assets/images2.png" alt=""
+    /></a>
+    <button
+      class="navbar-toggler navbar-toggler-right"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarResponsive"
+      aria-controls="navbarResponsive"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      Menu
+      <i class="fas fa-bars ml-1"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav text-uppercase ml-auto">
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" [routerLink]="['/about-us']"
+            >About</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#team">Team</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="btn btn-primary" (click)="show()">
+            Login
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div
+  [style.display]="showModal ? 'block' : 'none'"
+  class="modal"
+  id="imagemodal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Login</h4>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label>Email</label>
+            <input
+              type="text"
+              formControlName="email"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+            />
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+              <div *ngIf="f.email.errors.required">Email is required</div>
+              <div *ngIf="f.email.errors.email">
+                Email must be a valid email address
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              formControlName="password"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+            />
+            <div
+              *ngIf="submitted && f.password.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.password.errors.required">Password is required</div>
+              <div *ngIf="f.password.errors.minlength">
+                Password must be at least 6 characters
+              </div>
+            </div>
+          </div>
+          <div class="form-group form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" name="remember" />
+              Remember me
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-dark"
+          data-dismiss="modal"
+          (click)="hide()"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Masthead-->
+<header class="masthead">
+  <div class="container">
+    <div class="masthead-subheading">Welcome To Our Restaurant!</div>
+    <div class="masthead-heading text-uppercase">
+      We serve what you crave for!!
+    </div>
+    <a
+      class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
+      href="#services"
+      >Tell Me More</a
+    >
+  </div>
+</header>
+<!-- Services-->
+
+<!-- <services></services> -->
+
+<section id="menu" class="menu">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-heading text-uppercase">Check Our Tasty Menu</h2>
+    </div>
+
+    <div class="row menu-container">
+      <div class="col-lg-6 menu-item filter-starters">
+        <div class="menu-content">
+          <a href="#">Lobster Bisque</a><span>$5.95</span>
+        </div>
+        <div class="menu-ingredients">
+          Lorem, deren, trataro, filede, nerada
+        </div>
+      </div>
+
+      <div class="col-lg-6 menu-item filter-specialty">
+        <div class="menu-content">
+          <a href="#">Bread barrel</a><span>$6.95</span>
+        </div>
+        <div class="menu-ingredients">
+          Lorem, deren, trataro, filede, nerada
+        </div>
+      </div>
+
+      <div class="col-lg-6 menu-item filter-starters">
+        <div class="menu-content">
+          <a href="#">Crab Cake</a><span>$7.95</span>
+        </div>
+        <div class="menu-ingredients">
+          A delicate crab cake served on a toasted roll with lettuce and tartar
+          sauce
+        </div>
+      </div>
+
+      <div class="col-lg-6 menu-item filter-salads">
+        <div class="menu-content">
+          <a href="#">Caesar Selections</a><span>$8.95</span>
+        </div>
+        <div class="menu-ingredients">
+          Lorem, deren, trataro, filede, nerada
+        </div>
+      </div>
+
+      <div class="col-lg-6 menu-item filter-specialty">
+        <div class="menu-content">
+          <a href="#">Tuscan Grilled</a><span>$9.95</span>
+        </div>
+        <div class="menu-ingredients">
+          Grilled chicken with provolone, artichoke hearts, and roasted red
+          pesto
+        </div>
+      </div>
+
+      <div class="col-lg-6 menu-item filter-starters">
+        <div class="menu-content">
+          <a href="#">Mozzarella Stick</a><span>$4.95</span>
+        </div>
+        <div class="menu-ingredients">
+          Lorem, deren, trataro, filede, nerada
+        </div>
+      </div>
+
+      <div class="col-lg-6 menu-item filter-salads">
+        <div class="menu-content">
+          <a href="#">Greek Salad</a><span>$9.95</span>
+        </div>
+        <div class="menu-ingredients">
+          Fresh spinach, crisp romaine, tomatoes, and Greek olives
+        </div>
+      </div>
+
+      <div class="col-lg-6 menu-item filter-salads">
+        <div class="menu-content">
+          <a href="#">Spinach Salad</a><span>$9.95</span>
+        </div>
+        <div class="menu-ingredients">
+          Fresh spinach with mushrooms, hard boiled egg, and warm bacon
+          vinaigrette
+        </div>
+      </div>
+
+      <div class="col-lg-6 menu-item filter-specialty">
+        <div class="menu-content">
+          <a href="#">Lobster Roll</a><span>$12.95</span>
+        </div>
+        <div class="menu-ingredients">
+          Plump lobster meat, mayo and crisp lettuce on a toasted bulky roll
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Menu Section -->
+
+<section id="specials" class="specials">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-heading text-uppercase">Specials</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="tab" role="tabpanel">
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+              <a
+                href="#Section1"
+                aria-controls="home"
+                role="tab"
+                data-toggle="tab"
+                >Items 1</a
+              >
+            </li>
+            <li role="presentation">
+              <a
+                href="#Section2"
+                aria-controls="profile"
+                role="tab"
+                data-toggle="tab"
+                >Items 2</a
+              >
+            </li>
+            <li role="presentation">
+              <a
+                href="#Section3"
+                aria-controls="messages"
+                role="tab"
+                data-toggle="tab"
+                >Items 3</a
+              >
+            </li>
+            <li role="presentation">
+              <a
+                href="#Section4"
+                aria-controls="messages"
+                role="tab"
+                data-toggle="tab"
+                >Items 4</a
+              >
+            </li>
+            <li role="presentation">
+              <a
+                href="#Section5"
+                aria-controls="messages"
+                role="tab"
+                data-toggle="tab"
+                >Items 5</a
+              >
+            </li>
+          </ul>
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade in active" id="Section1">
+              <div class="row">
+                <div class="col-lg-8 details order-2 order-lg-1">
+                  <h3>Indian map thali</h3>
+                  <p class="fst-italic">
+                    “A Thali as Map Of India? Yes We are serving this very
+                    unique and delicious Thali based on a concept of diversity
+                    of cuisine ..
+                  </p>
+                  <p>
+                    “A Thali as Map Of India? Yes We are serving this very
+                    unique and delicious Thali based on a concept of diversity
+                    of cuisine ..
+                  </p>
+                </div>
+                <div class="col-lg-4 text-center order-1 order-lg-2">
+                  <img
+                    src="../../assets/specials/imagest.jpg"
+                    alt=""
+                    class="img-fluid"
+                  />
+                </div>
+              </div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="Section2">
+              <div class="row">
+                <div class="col-lg-8 details order-2 order-lg-1">
+                  <h3>Biryani</h3>
+                  <p class="fst-italic">
+                    Qui laudantium consequatur laborum sit qui ad sapiente dila
+                    parde sonata raqer a videna mareta paulona marka
+                  </p>
+                  <p>
+                    Et nobis maiores eius. Voluptatibus ut enim blanditiis atque
+                    harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic
+                    ut molestiae aut qui. Est repellat minima eveniet eius et
+                    quis magni nihil. Consequatur dolorem quaerat quos qui
+                    similique accusamus nostrum rem vero
+                  </p>
+                </div>
+                <div class="col-lg-4 text-center order-1 order-lg-2">
+                  <img
+                    src="../../assets/specials/index.jpg"
+                    alt=""
+                    class="img-fluid"
+                  />
+                </div>
+              </div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="Section3">
+              <div class="row">
+                <div class="col-lg-8 details order-2 order-lg-1">
+                  <h3>Architecto ut aperiam autem id</h3>
+                  <p class="fst-italic">
+                    Qui laudantium consequatur laborum sit qui ad sapiente dila
+                    parde sonata raqer a videna mareta paulona marka
+                  </p>
+                  <p>
+                    Et nobis maiores eius. Voluptatibus ut enim blanditiis atque
+                    harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic
+                    ut molestiae aut qui. Est repellat minima eveniet eius et
+                    quis magni nihil. Consequatur dolorem quaerat quos qui
+                    similique accusamus nostrum rem vero
+                  </p>
+                </div>
+                <div class="col-lg-4 text-center order-1 order-lg-2">
+                  <img
+                    src="../../assets/specials/index1.jpg"
+                    alt=""
+                    class="img-fluid"
+                  />
+                </div>
+              </div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="Section4">
+              <div class="row">
+                <div class="col-lg-8 details order-2 order-lg-1">
+                  <h3>Architecto ut aperiam autem id</h3>
+                  <p class="fst-italic">
+                    Qui laudantium consequatur laborum sit qui ad sapiente dila
+                    parde sonata raqer a videna mareta paulona marka
+                  </p>
+                  <p>
+                    Et nobis maiores eius. Voluptatibus ut enim blanditiis atque
+                    harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic
+                    ut molestiae aut qui. Est repellat minima eveniet eius et
+                    quis magni nihil. Consequatur dolorem quaerat quos qui
+                    similique accusamus nostrum rem vero
+                  </p>
+                </div>
+                <div class="col-lg-4 text-center order-1 order-lg-2">
+                  <img
+                    src="../../assets/specials/pancake.jpg"
+                    alt=""
+                    class="img-fluid"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane fade" id="Section5">
+              <div class="row">
+                <div class="col-lg-8 details order-2 order-lg-1">
+                  <h3>Architecto ut aperiam autem id</h3>
+                  <p class="fst-italic">
+                    Qui laudantium consequatur laborum sit qui ad sapiente dila
+                    parde sonata raqer a videna mareta paulona marka
+                  </p>
+                  <p>
+                    Et nobis maiores eius. Voluptatibus ut enim blanditiis atque
+                    harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic
+                    ut molestiae aut qui. Est repellat minima eveniet eius et
+                    quis magni nihil. Consequatur dolorem quaerat quos qui
+                    similique accusamus nostrum rem vero
+                  </p>
+                </div>
+                <div class="col-lg-4 text-center order-1 order-lg-2">
+                  <img
+                    src="../../assets/specials/pizza.jpg"
+                    alt=""
+                    class="img-fluid"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Specials Section -->
+
+<!-- Portfolio Grid-->
+<section class="page-section bg-light" id="portfolio">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-heading text-uppercase">Portfolio</h2>
+      <h3 class="section-subheading text-muted">
+        All our famous dishes images
+      </h3>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-sm-6 mb-4">
+        <div class="portfolio-item">
+          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="../../assets/biryani.jpeg" alt="" />
+          </a>
+          <div class="portfolio-caption">
+            <div class="portfolio-caption-heading">Threads</div>
+            <div class="portfolio-caption-subheading text-muted">
+              Illustration
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 mb-4">
+        <div class="portfolio-item">
+          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="../../assets/dosa.jpeg" alt="" />
+          </a>
+          <div class="portfolio-caption">
+            <div class="portfolio-caption-heading">Explore</div>
+            <div class="portfolio-caption-subheading text-muted">
+              Graphic Design
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 mb-4">
+        <div class="portfolio-item">
+          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="../../assets/idli.jpeg" alt="" />
+          </a>
+          <div class="portfolio-caption">
+            <div class="portfolio-caption-heading">Finish</div>
+            <div class="portfolio-caption-subheading text-muted">Identity</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
+        <div class="portfolio-item">
+          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="../../assets/pani.jpeg" alt="" />
+          </a>
+          <div class="portfolio-caption">
+            <div class="portfolio-caption-heading">Lines</div>
+            <div class="portfolio-caption-subheading text-muted">Branding</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
+        <div class="portfolio-item">
+          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal5">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="../../assets/samosa.jpeg" alt="" />
+          </a>
+          <div class="portfolio-caption">
+            <div class="portfolio-caption-heading">Southwest</div>
+            <div class="portfolio-caption-subheading text-muted">
+              Website Design
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6">
+        <div class="portfolio-item">
+          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="../../assets/bir.jpeg" alt="" />
+          </a>
+          <div class="portfolio-caption">
+            <div class="portfolio-caption-heading">Window</div>
+            <div class="portfolio-caption-subheading text-muted">
+              Photography
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- About-->
+
+<!-- Team-->
+
+<!-- Clients-->
+
+<!-- Contact-->
+
+<!-- Footer-->
+<footer class="footer py-4">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-4 text-lg-left">Copyright © Your Website 2020</div>
+      <div class="col-lg-4 my-3 my-lg-0">
+        <a class="btn btn-dark btn-social mx-2" href="#!"
+          ><i class="fab fa-twitter"></i
+        ></a>
+        <a class="btn btn-dark btn-social mx-2" href="#!"
+          ><i class="fab fa-facebook-f"></i
+        ></a>
+        <a class="btn btn-dark btn-social mx-2" href="#!"
+          ><i class="fab fa-linkedin-in"></i
+        ></a>
+      </div>
+      <div class="col-lg-4 text-lg-right">
+        <a class="mr-3" href="#!">Privacy Policy</a>
+        <a href="#!">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- Portfolio Modals-->
+<!-- Modal 1-->
+<div
+  class="portfolio-modal modal fade"
+  id="portfolioModal1"
+  tabindex="-1"
+  role="dialog"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="close-modal" data-dismiss="modal">
+        <img src="assets/img/close-icon.svg" alt="Close modal" />
+      </div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="modal-body">
+              <!-- Project Details Go Here-->
+              <h2 class="text-uppercase">Mughlai Biryani</h2>
+
+              <img
+                class="img-fluid d-block mx-auto"
+                src="../../assets/biryani.jpeg"
+                alt=""
+              />
+              <p>
+                This Mughlai biryani is a mild, lightly spiced, dum cooked &
+                layered biryani made with rice, spices, mix veggies and dry
+                fruits. Sharing my version of Mughlai biryani made with
+                almond-melon seeds paste, curd, spices and fried onions
+                (birista). ... Though you can cook the veggies in a pan too.
+              </p>
+              <ul class="list-inline">
+                <li>Recipe: Youtube 2020</li>
+                <li>Chef:Jyotsana</li>
+                <li>Category: Indian</li>
+              </ul>
+              <button
+                class="btn btn-primary"
+                data-dismiss="modal"
+                type="button"
+              >
+                <i class="fas fa-times mr-1"></i>
+                Close Project
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal 2-->
+<div
+  class="portfolio-modal modal fade"
+  id="portfolioModal2"
+  tabindex="-1"
+  role="dialog"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="close-modal" data-dismiss="modal">
+        <img src="assets/img/close-icon.svg" alt="Close modal" />
+      </div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="modal-body">
+              <!-- Project Details Go Here-->
+              <h2 class="text-uppercase">Dosa</h2>
+
+              <img
+                class="img-fluid d-block mx-auto"
+                src="../../assets/dosa.jpeg"
+                alt=""
+              />
+              <p>
+                A dosai or dosa or dose is a thin pancake or crepe, originating
+                from South India, made from a fermented batter predominantly
+                consisting of lentils and rice. ... Its main ingredients are
+                rice and black gram, ground together in a fine, smooth batter
+                with a dash of salt, then fermented.
+              </p>
+
+              <button
+                class="btn btn-primary"
+                data-dismiss="modal"
+                type="button"
+              >
+                <i class="fas fa-times mr-1"></i>
+                Close Project
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal 3-->
+<div
+  class="portfolio-modal modal fade"
+  id="portfolioModal3"
+  tabindex="-1"
+  role="dialog"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="close-modal" data-dismiss="modal">
+        <img src="assets/img/close-icon.svg" alt="Close modal" />
+      </div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="modal-body">
+              <!-- Project Details Go Here-->
+              <h2 class="text-uppercase">Thatte idli</h2>
+
+              <img
+                class="img-fluid d-block mx-auto"
+                src="../../assets/idli.jpeg"
+                alt=""
+              />
+              <p>
+                Idli or idly ( pronunciation (help·info)) (/ɪdliː/) are a type
+                of savoury rice cake, originating from the Indian subcontinent,
+                popular as breakfast foods in Southern India and in Sri Lanka.
+                The cakes are made by steaming a batter consisting of fermented
+                black lentils (de-husked) and rice.
+              </p>
+
+              <button
+                class="btn btn-primary"
+                data-dismiss="modal"
+                type="button"
+              >
+                <i class="fas fa-times mr-1"></i>
+                Close Project
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal 4-->
+<div
+  class="portfolio-modal modal fade"
+  id="portfolioModal4"
+  tabindex="-1"
+  role="dialog"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="close-modal" data-dismiss="modal">
+        <img src="assets/img/close-icon.svg" alt="Close modal" />
+      </div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="modal-body">
+              <!-- Project Details Go Here-->
+              <h2 class="text-uppercase">Project Name</h2>
+              <p class="item-intro text-muted">
+                Lorem ipsum dolor sit amet consectetur.
+              </p>
+              <img
+                class="img-fluid d-block mx-auto"
+                src="assets/img/portfolio/04-full.jpg"
+                alt=""
+              />
+              <p>
+                Use this area to describe your project. Lorem ipsum dolor sit
+                amet, consectetur adipisicing elit. Est blanditiis dolorem culpa
+                incidunt minus dignissimos deserunt repellat aperiam quasi sunt
+                officia expedita beatae cupiditate, maiores repudiandae,
+                nostrum, reiciendis facere nemo!
+              </p>
+              <ul class="list-inline">
+                <li>Date: January 2020</li>
+                <li>Client: Lines</li>
+                <li>Category: Branding</li>
+              </ul>
+              <button
+                class="btn btn-primary"
+                data-dismiss="modal"
+                type="button"
+              >
+                <i class="fas fa-times mr-1"></i>
+                Close Project
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal 5-->
+<div
+  class="portfolio-modal modal fade"
+  id="portfolioModal5"
+  tabindex="-1"
+  role="dialog"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="close-modal" data-dismiss="modal">
+        <img src="assets/img/close-icon.svg" alt="Close modal" />
+      </div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="modal-body">
+              <!-- Project Details Go Here-->
+              <h2 class="text-uppercase">Project Name</h2>
+              <p class="item-intro text-muted">
+                Lorem ipsum dolor sit amet consectetur.
+              </p>
+              <img
+                class="img-fluid d-block mx-auto"
+                src="assets/img/portfolio/05-full.jpg"
+                alt=""
+              />
+              <p>
+                Use this area to describe your project. Lorem ipsum dolor sit
+                amet, consectetur adipisicing elit. Est blanditiis dolorem culpa
+                incidunt minus dignissimos deserunt repellat aperiam quasi sunt
+                officia expedita beatae cupiditate, maiores repudiandae,
+                nostrum, reiciendis facere nemo!
+              </p>
+              <ul class="list-inline">
+                <li>Date: January 2020</li>
+                <li>Client: Southwest</li>
+                <li>Category: Website Design</li>
+              </ul>
+              <button
+                class="btn btn-primary"
+                data-dismiss="modal"
+                type="button"
+              >
+                <i class="fas fa-times mr-1"></i>
+                Close Project
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal 6-->
+<div
+  class="portfolio-modal modal fade"
+  id="portfolioModal6"
+  tabindex="-1"
+  role="dialog"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="close-modal" data-dismiss="modal">
+        <img src="assets/img/close-icon.svg" alt="Close modal" />
+      </div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="modal-body">
+              <!-- Project Details Go Here-->
+              <h2 class="text-uppercase">Project Name</h2>
+              <p class="item-intro text-muted">
+                Lorem ipsum dolor sit amet consectetur.
+              </p>
+              <img
+                class="img-fluid d-block mx-auto"
+                src="assets/img/portfolio/06-full.jpg"
+                alt=""
+              />
+              <p>
+                Use this area to describe your project. Lorem ipsum dolor sit
+                amet, consectetur adipisicing elit. Est blanditiis dolorem culpa
+                incidunt minus dignissimos deserunt repellat aperiam quasi sunt
+                officia expedita beatae cupiditate, maiores repudiandae,
+                nostrum, reiciendis facere nemo!
+              </p>
+              <ul class="list-inline">
+                <li>Date: January 2020</li>
+                <li>Client: Window</li>
+                <li>Category: Photography</li>
+              </ul>
+              <button
+                class="btn btn-primary"
+                data-dismiss="modal"
+                type="button"
+              >
+                <i class="fas fa-times mr-1"></i>
+                Close Project
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
